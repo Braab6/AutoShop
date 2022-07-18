@@ -37,7 +37,7 @@ def Nike ():
  
     size = driver.find_element(By.ID, "skuAndSize__24375104").click()
 
-
+#'ASDFFFFF'
 root.title("AutoBot")
 root.geometry("300x300")
 Zalandobutton = Button(root, text="Zalando", command=Zalando)
