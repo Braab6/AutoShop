@@ -33,7 +33,6 @@ def Nike ():
 
     #cookie = driver.find_element(By.ID, "uc-btn-accept-banner").click()
 
-    time.sleep(1)
 
  
     size = driver.find_element(By.ID, "skuAndSize__24375104").click()
