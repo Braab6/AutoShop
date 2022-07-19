@@ -26,7 +26,7 @@ token = "OTk2MTQ1Mjc5OTEwODEzNzc2.GPdTto.f_FCHy1E5alVIakbyFQUO5h7_dVCGOxsWFDNB4"
                 )
             ]
         )
-    ]   
+    ]   #assss
 )
 async def _releases(ctx:SlashContext, option:str):
     await ctx.send(option)
