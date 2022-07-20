@@ -9,6 +9,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 root = Tk()
 
+
 def Zalando ():
     driver = webdriver.Chrome("C:\\Users\\49152\\Downloads\\chromedriver_win32\\chromedriver.exe")
     driver.get("https://www.zalando.de/jordan-air-1-sneaker-low-joc12o006-a13.html")
@@ -26,28 +27,47 @@ def Zalando ():
 
 def Nike ():
 
+    password = "t:W4gqHz@DGX"
+    email = "raab06b@gmail.com"
+
     options = webdriver.ChromeOptions()
     options.add_experimental_option("detach", True)
+   # For older ChromeDriver under version 79.0.3945.16
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+
+    #For ChromeDriver version 79.0.3945.16 or over
+    options.add_argument('--disable-blink-features=AutomationControlled')
+
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'C:\\Users\\49152\\Downloads\\chromedriver_win32\\chromedriver.exe')
     driver.get("https://www.nike.com/de/t/air-jordan-1-low-herrenschuh-PPffMw/553558-130")
    
-    time.sleep(3.5)
+    time.sleep(10)
 
 
     print("smth")
 
     cookie = driver.find_element(By.ID, "hf_cookie_text_cookieAccept").click()
- 
-    size = driver.find_element(By.ID, "skuAndSize__24375214")
-    print("smth")
-    driver.execute_script("arguments[0].scrollIntoView();", size)
+    time.sleep(3)
+    #login in account
+    favorite = driver.find_element(By.XPATH, "//span[@class='wishlist-btn__tooltip prl3-sm']").click()
     time.sleep(1)
-    driver.execute_script("arguments[0].click();", size)
+    email = driver.find_element(By.ID, "a75fec63-e72e-4102-8a0c-ca3036963ba6").send_keys(email)
     time.sleep(1)
-    cart = driver.find_element(By.XPATH, "//button[@aria-label='In den Warenkorb']")
-    time.sleep(1)
-    driver.execute_script("arguments[0].click();", cart)
 
+
+
+    #driver.execute_script("window.history.go(-1)")
+    #time.sleep(1)
+    #size = driver.find_element(By.ID, "skuAndSize__24375214")
+    #time.sleep(1)
+    #driver.execute_script("arguments[0].scrollIntoView();", size)
+    #time.sleep(1)
+    #driver.execute_script("arguments[0].click();", size)
+    #time.sleep(5)
+    #cart = driver.find_element(By.XPATH, "//button[@aria-label='In den Warenkorb']") .click()
+    #time.sleep(1)
+    
     #time.sleep(100)
   
     
