@@ -6,6 +6,7 @@ from selenium.webdriver.support.select import Select
 from tkinter import *
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
+import random
 
 root = Tk()
 
@@ -42,7 +43,7 @@ def Nike ():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'C:\\Users\\49152\\Downloads\\chromedriver_win32\\chromedriver.exe')
     driver.get("https://www.nike.com/de/t/air-jordan-1-low-herrenschuh-PPffMw/553558-130")
    
-    time.sleep(10)
+    time.sleep(2)
 
 
     print("smth")
@@ -52,9 +53,22 @@ def Nike ():
     #login in account
     favorite = driver.find_element(By.XPATH, "//span[@class='wishlist-btn__tooltip prl3-sm']").click()
     time.sleep(1)
-    email = driver.find_element(By.ID, "a75fec63-e72e-4102-8a0c-ca3036963ba6").send_keys(email)
+    email = driver.find_element(By.CSS_SELECTOR, "body > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > form:nth-child(2) > div:nth-child(3) > input:nth-child(4)").send_keys(email)
     time.sleep(1)
-
+    action = ActionChains(driver)
+    action.send_keys(Keys.TAB)
+    action.send_keys(password)
+    time.sleep(1)
+    currentURL = driver.current_url
+    #open new tab
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[1])
+    driver.get(currentURL)
+    email = driver.find_element(By.CSS_SELECTOR, "body > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > form:nth-child(2) > div:nth-child(3) > input:nth-child(4)").send_keys(email)
+    action.send_keys(Keys.TAB)
+    action.send_keys(password)
+    action.send_keys(Keys.ENTER)
+    action.perform()
 
 
     #driver.execute_script("window.history.go(-1)")
